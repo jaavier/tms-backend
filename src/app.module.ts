@@ -4,16 +4,21 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TicketsModule } from './tickets/tickets.module';
 import { UsersModule } from './users/users.module';
+import * as dotenv from 'dotenv';
+
+dotenv.config({
+  path: './.env',
+});
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: '',
-      password: 'password',
-      database: '',
+      host: process.env.HOST,
+      port: parseInt(process.env.PORT) || 5432,
+      username: process.env.USERNAME,
+      password: process.env.PASSWORD,
+      database: process.env.DATABASE,
       synchronize: true,
       autoLoadEntities: true,
     }),
