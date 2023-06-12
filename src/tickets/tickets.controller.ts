@@ -7,13 +7,9 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { TicketsService } from './tickets.service';
-import { Ticket } from './entities/ticket.entity';
-import { TicketDTO } from './dto/ticket.dto';
 
-type Response = {
-  message: string;
-};
+import { TicketsService } from './tickets.service';
+import { TicketDTO } from './dto/ticket.dto';
 
 @Controller('tickets')
 export class TicketsController {
