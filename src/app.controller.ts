@@ -1,12 +1,7 @@
-import { Controller, Get, Param, Post, Query } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { AppService } from './app.service';
 
-type BodySumNumbers = {
-  a: number;
-  b: number;
-};
-
-@Controller('sum')
+@Controller('/')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 

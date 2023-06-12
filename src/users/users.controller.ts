@@ -1,0 +1,28 @@
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import { UserDTO } from './dto/users.dto';
+import { UsersService } from './users.service';
+
+@Controller('users')
+export class UsersController {
+  constructor(private usersService: UsersService) {}
+
+  @Get()
+  async getAll(): Promise<UserDTO[]> {
+    const results = await this.usersService.readAll();
+    return results;
+  }
+
+  @Post('login')
+  async login(@Body() user: UserDTO): Promise<boolean> {
+    const results = await this.usersService.validateCredentials(user);
+    console.log('login', results);
+    return results;
+  }
+
+  @Post('register')
+  async register(@Body() user: UserDTO): Promise<boolean> {
+    const results = await this.usersService.createAccount(user);
+    console.log('register', results);
+    return results;
+  }
+}
