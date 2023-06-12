@@ -6,12 +6,6 @@ import { UsersService } from './users.service';
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
-  @Get()
-  async getAll(): Promise<UserDTO[]> {
-    const results = await this.usersService.readAll();
-    return results;
-  }
-
   @Post('login')
   async login(@Body() user: UserDTO): Promise<boolean> {
     const results = await this.usersService.validateCredentials(user);
