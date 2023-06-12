@@ -9,14 +9,12 @@ export class UsersController {
   @Post('login')
   async login(@Body() user: UserDTO): Promise<boolean> {
     const results = await this.usersService.validateCredentials(user);
-    console.log('login', results);
     return results;
   }
 
   @Post('register')
   async register(@Body() user: UserDTO): Promise<boolean> {
     const results = await this.usersService.createAccount(user);
-    console.log('register', results);
     return results;
   }
 }
