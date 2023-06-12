@@ -11,7 +11,7 @@ async function bootstrap() {
       "It's an API for interacting with the Ticket Management System",
     )
     .setVersion('1.0')
-    .addTag('cats')
+    .addTag('ticket-management-system')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('documentation', app, document);
